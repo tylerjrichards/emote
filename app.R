@@ -1,17 +1,19 @@
-
+#load all the necessary packages
 library("httr")
 library("XML")
 library("stringr")
 library("ggplot2")
 library("plumber")
 
+#start with a url for an image that you want to analyze
 img.url = ''
 img.url     = 'http://static6.businessinsider.com/image/55918b77ecad04a3465a0a63/nbc-fires-donald-trump-after-he-calls-mexicans-rapists-and-drug-runners.jpg'
+#don't worry about this until you get to the end of the bit, you'll have to run some complicated code using plumber to create a RESTing API
 #* @get /ping
 ping <- function() {
   print("PING!")
 }
-
+#put all of your necessary code in the function
 #* @get /emote
 emote <- function(url){
   print("hello")
@@ -42,15 +44,19 @@ emote <- function(url){
   
   # Reuqest results from face analysis
   Obama = httr::content(faceEMO)[[1]]
-  Obama
   
-  print(Obama$scores)
+  #Create array of scores received by the api
+  #the variable was called Obama just because I missed the man, no other reason
   x <- Obama$scores
   x <- max(Obama$scores$anger, Obama$scores$contempt, Obama$scores$disgust, Obama$scores$fear, Obama$scores$happiness, Obama$scores$sadness)
+  
+  #the package mailR allows you to send push notifications to yourself via email or text, use it to enter the device(s) that you want to push to
   
   library(mailR)
   sender <- "emoteuf@gmail.com"
   recipients <- c("emoteuf@gmail.com", "4076836172@tmomail.net", "5618664321@txt.att.net")
+  
+  #check which is the predominant emotion from the picture, and send the appropriate message to yourself
   
   if(Obama$scores$anger == x) {
     send.mail(from = sender,
@@ -59,7 +65,7 @@ emote <- function(url){
               body = " ",
               smtp = list(host.name = "smtp.gmail.com", port = 465, 
                           user.name = "emoteuf@gmail.com",            
-                          passwd = "ldtchs1850", ssl = TRUE),
+                          passwd = "", ssl = TRUE),
               authenticate = TRUE,
               send = TRUE)
   }
@@ -70,7 +76,7 @@ emote <- function(url){
               body = " ",
               smtp = list(host.name = "smtp.gmail.com", port = 465, 
                           user.name = "emoteuf@gmail.com",            
-                          passwd = "ldtchs1850", ssl = TRUE),
+                          passwd = "", ssl = TRUE),
               authenticate = TRUE,
               send = TRUE)
   }
@@ -81,7 +87,7 @@ emote <- function(url){
               body = " ",
               smtp = list(host.name = "smtp.gmail.com", port = 465, 
                           user.name = "tylerjrichards@gmail.com",            
-                          passwd = "ldtchs1850", ssl = TRUE),
+                          passwd = "", ssl = TRUE),
               authenticate = TRUE,
               send = TRUE)
   }
@@ -92,7 +98,7 @@ emote <- function(url){
               body = " ",
               smtp = list(host.name = "smtp.gmail.com", port = 465, 
                           user.name = "tylerjrichards@gmail.com",            
-                          passwd = "ldtchs1850", ssl = TRUE),
+                          passwd = "", ssl = TRUE),
               authenticate = TRUE,
               send = TRUE)
   }
@@ -103,7 +109,7 @@ emote <- function(url){
               body = " ",
               smtp = list(host.name = "smtp.gmail.com", port = 465, 
                           user.name = "tylerjrichards@gmail.com",            
-                          passwd = "ldtchs1850", ssl = TRUE),
+                          passwd = "", ssl = TRUE),
               authenticate = TRUE,
               send = TRUE)
   }
@@ -114,7 +120,7 @@ emote <- function(url){
               body = " ",
               smtp = list(host.name = "smtp.gmail.com", port = 465, 
                           user.name = "tylerjrichards@gmail.com",            
-                          passwd = "ldtchs1850", ssl = TRUE),
+                          passwd = "", ssl = TRUE),
               authenticate = TRUE,
               send = TRUE)
   }
