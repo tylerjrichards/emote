@@ -130,6 +130,9 @@ emote <- function(url){
   
 }
 
+#here is an example of using the function. The output gives you the individual scores and texts/emails you with the predominant one
+#if you're triggered by a picture of Ted Cruz's face, don't click the link
+emote('https://pbs.twimg.com/media/CLxMViBVEAArj8Y.jpg')
 
 
 
