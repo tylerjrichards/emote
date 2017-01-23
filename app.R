@@ -5,11 +5,13 @@ library("stringr")
 library("ggplot2")
 library("plumber")
 
-#start with a url for an image that you want to analyze
+#start with a url for an image that you want to analyze, any url that points to an image will work perfectly here
 img.url = ''
 img.url     = 'http://static6.businessinsider.com/image/55918b77ecad04a3465a0a63/nbc-fires-donald-trump-after-he-calls-mexicans-rapists-and-drug-runners.jpg'
-#don't worry about this until you get to the end of the bit, you'll have to run some complicated code using plumber to create a RESTing API
+
+#The comments below use the library plumber to create a RESTing API, you only need to do this if you want to create a website based on this code
 #* @get /ping
+#use this function to practice if you want
 ping <- function() {
   print("PING!")
 }
